@@ -1,6 +1,8 @@
-import fs from 'fs';
-import { join } from 'path';
+export class ErrorResponse extends Error {
+  status: number;
 
-export const deleteFile = (path: string, fileName: string) => {
-  fs.unlinkSync(join(__dirname, `${path}/${fileName}`));
-};
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+  }
+}
